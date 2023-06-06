@@ -1,4 +1,4 @@
-import { MazeData, Point } from './LabirynthTypes';
+import { FilledBoard, MazeData, Point } from '../../shared/LabirynthTypes';
 
 function dfs(maze: MazeData, startPoint: Point) {
   const height = maze.length;
@@ -41,8 +41,7 @@ function dfs(maze: MazeData, startPoint: Point) {
   }
 }
 
-export function dfsWrapper(maze: MazeData, startPoint: Point): MazeData {
-  const clonedMaze = JSON.parse(JSON.stringify(maze));
-  dfs(clonedMaze, startPoint);
-  return clonedMaze;
+export function dfsWrapper(maze: FilledBoard, startPoint: Point): MazeData {
+  dfs(maze, startPoint);
+  return maze;
 }

@@ -1,8 +1,9 @@
-// Funkcja generująca labirynt o podanych wymiarach
-import * as fs from 'fs';
-import { dfsWrapper } from './labirynth/DFS';
-import { Maze } from './labirynth/Maze';
+import { generateFilledBoard } from './board';
+import { generateMaze } from './maze';
+import { dfsWrapper } from './maze/algorithms/DFS';
+import { mazeToString } from './maze/formatters/mazeFormatters';
 
-const maze = new Maze(50, 50, dfsWrapper);
-console.log(maze.print());
-fs.promises.writeFile('./generated/labyrinth.txt', maze.print()).then(() => console.log('Done'));
+const board = generateFilledBoard(50, 50);
+const maze = generateMaze(board, dfsWrapper);
+
+console.log(mazeToString(maze));
